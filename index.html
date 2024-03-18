@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Lobster&effect=shadow-multiple"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Tangerine"
+    />
+    <title>Roll The Dice</title>
+  </head>
+  <body>
+    <div class="layout-grid">
+      <header id="title">Choose Your Side (Carefully)</header>
+
+      <div class="dice-area" id="pressable-area">
+        <h2>Player 1</h2>
+        <img src="images/dice1.png" alt="Dice" />
+      </div>
+
+      <div class="dice-area">
+        <h2>Player 2</h2>
+        <img src="images/dice1.png" alt="Dice" />
+      </div>
+    </div>
+
+    <script>
+      const images = [
+        "images/dice1.png",
+        "images/dice2.png",
+        "images/dice3.png",
+        "images/dice4.png",
+        "images/dice5.png",
+        "images/dice6.png",
+      ];
+      function getRandomImage() {
+        const randomIndex = Math.floor(Math.random() * images.length);
+        const randomImage = images[randomIndex];
+        return randomImage;
+      }
+
+      const diceAreas = document.querySelectorAll(".dice-area");
+
+      diceAreas.forEach(function (diceArea) {
+        diceArea.addEventListener("click", function () {
+          const diceImages = document.querySelectorAll(".dice-area img");
+          diceImages.forEach(function (diceImage) {
+            diceImage.src = getRandomImage();
+          });
+          compareDices(diceImages);
+        });
+      });
+      function compareDices(diceImages) {
+        if (
+          images.indexOf(diceImages[0].getAttribute("src")) > images.indexOf(diceImages[1].getAttribute("src"))
+        ) {
+          document.getElementById("title").innerHTML = "Played 1 Won";
+        } else if (
+          images.indexOf(diceImages[1].getAttribute("src")) > images.indexOf(diceImages[0].getAttribute("src"))
+        ) {
+          document.getElementById("title").innerHTML = "Played 2 Won";
+        } else {
+          document.getElementById("title").innerHTML = "Draw";
+        }
+      }
+    </script>
+  </body>
+</html>

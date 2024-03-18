@@ -1,0 +1,42 @@
+body {
+    background-color: #9290C3;
+
+}
+.layout-grid {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: fit-content fit-content fit-content;
+    text-align: center;
+    color: #1B1A55;
+    padding: 5%;
+
+
+}
+.layout-grid > header  {
+    font-family: "Lobster", Sans-serif;
+    grid-column: span 2;
+    justify-self: center;
+    font-weight: bolder;
+    font-size: 5rem;
+    margin-bottom: 15vh;
+}
+.dice-area {
+    display: flex;
+    cursor: pointer;
+    align-items: center;
+    flex-direction: column;
+}
+.dice-area > * {
+    max-width: 80%;
+    min-width: 40%;
+}
+.dice-area > h2{
+    font-family: "Tangerine", serif;
+    font-size: 2.5rem;
+    justify-content: center;
+}
+.layout-grid > button{
+    grid-column: span 2;
+    width: 40%;
+    justify-self: center;
+}
